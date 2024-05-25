@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+</head>
+<body>
+    <h1>Job Listings</h1>
+    <ul>
+        <% jobs.forEach(job => { %>
+            <li>
+                <h2><%= job.description %></h2>
+                <p>Price: <%= job.price %> ETH</p>
+                <form action="/api/applyForJob" method="post">
+                    <input type="hidden" name="jobId" value="<%= job.id %>">
+                    <input type="hidden" name="contractorAddress" value="<%= contractorAddress %>">
+                    <button type="submit">Apply for Job</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
